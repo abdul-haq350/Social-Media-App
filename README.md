@@ -1,6 +1,6 @@
 # Social-Media-App
 
-This is a simple Social Media App built using Python's Webframe "Django"
+This is a simple Social Media App built using Python's Web framework "Django"
 
 ### Prerequisites
 
