@@ -1,0 +1,124 @@
+{% load static %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SocialApp</title>
+    <link rel="shortcut icon" href="{% static 'img/logo.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+  </head>
+  <body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="">
+      <img src="{% static 'img/logo.png' %}" width="64" height="64">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+
+    <div class="navbar-start">
+      <a href="{% url 'index' %}" class="navbar-item">
+        <i style="color: brown;" class="material-icons">home</i>
+        Home
+      </a>
+
+
+
+      <a href="{% url 'show-notifications' %}" class="navbar-item">
+        <i style="color: gold;" class="material-icons">notifications</i>
+        Notifications
+        {% if count_notifications %}
+          <span class="badge">{{ count_notifications }}</span>
+        {% endif %}
+      </a>
+
+      <a href="{% url 'inbox' %}" class="navbar-item">
+        <i style="color: teal;" class="material-icons">inbox</i>
+        Inbox
+        {% if directs_count %}
+        <span class="badge">{{ directs_count }}</span>
+        {% endif %}
+      </a>
+
+      </div>
+
+
+
+    <div class="navbar-start"> </div>
+    <div class="navbar-start"> </div>
+    <div class="navbar-start"> </div>
+    <div class="navbar-start"> </div>
+    <div class="navbar-start"> </div>
+    <div class="navbar-start"> </div>
+    <div class="navbar-start"> </div>
+    <div class="navbar-start"> </div>
+
+
+
+
+
+    <div class="navbar-start">
+
+      <a href="{% url 'profile' request.user %}" class="navbar-item">
+        <i style="color: red;" class="material-icons md-dark">account_circle</i>
+        Profile - <strong>{{ request.user }}</strong>
+      </a>
+
+        <a href="{% url 'newpost' %}" class="navbar-item">
+          <i style="color: green;" class="material-icons">perm_media</i>
+          New Post
+        </a>
+
+        <a href="{% url 'newstory' %}" class="navbar-item">
+          <i style="color: blue;" class="material-icons ">photo_filter</i>
+          New Story
+        </a>
+
+
+      <a href="{% url 'logout' %}" class="navbar-item">
+        <i class="material-icons">logout</i>
+        Log out
+      </a>
+    </div>
+  </div>
+
+
+</nav>
+
+      {% block banner %}
+      {% endblock %}
+
+  <section class="section">
+    <div class="container">
+
+      {% block content %}
+      {% endblock %}
+
+
+      {% block pagination %}
+      {% endblock %}
+
+    </div>
+  </section>
+
+
+
+  </body>
+ 
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static 'js/init.js' %}"></script>
+  <script src="{% static 'js/slider.js' %}"></script>
+</html>
